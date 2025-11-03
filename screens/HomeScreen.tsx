@@ -12,8 +12,10 @@ import ToolBar from '../components/ToolBar';
 import { generateMockData } from '../data/MockData';
 import { globalStyles } from '../styles/globalStyles';
 import { ListItem } from '../types/common';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const HomeScreen: React.FC = () => {
+  const insets = useSafeAreaInsets();
   const scheme = useColorScheme(); // 'dark' or 'light'
   const isDarkMode = scheme === 'dark';
   const uiElements = globalStyles(isDarkMode);
@@ -48,12 +50,14 @@ const HomeScreen: React.FC = () => {
   );
 
   return (
-    <SafeAreaView style={uiElements.container}>
-      {/* <StatusBar
-        backgroundColor="#6200EE"
-        barStyle={scheme === 'dark' ? 'light-content' : 'dark-content'}
-        translucent={false}
-      /> */}
+    <SafeAreaView
+      style={[
+        uiElements.container,
+        {
+          paddingBottom: insets.bottom, // ensures content stays above navigation bar
+        },
+      ]}
+    >
       <ToolBar title="My App" />
       <View style={uiElements.contentContainer}>
         <CustomText />
