@@ -1,30 +1,22 @@
 import React from 'react';
-import { View, Text, Alert, StyleSheet } from 'react-native';
+import { View, Text, Alert } from 'react-native';
+import { globalStyles } from '../styles/globalStyles';
 
-type ItemPropsType = { name: string; count: number };
+type ItemPropsType = { name: string; count: number; isDarkMode: Boolean };
 
-const ItemProps: React.FC<ItemPropsType> = ({ name, count }) => {
+const ItemProps: React.FC<ItemPropsType> = ({ name, count, isDarkMode }) => {
+  const styles = globalStyles(isDarkMode);
+
   const onClickHandle = () => {
     Alert.alert('Item clicked at ' + count);
   };
   return (
-    <View style={styles.itemContainer}>
+    <View style={styles.itemPropsContainer}>
       <Text onPress={() => onClickHandle()}>
         {name} {count}{' '}
       </Text>
     </View>
   );
 };
-const styles = StyleSheet.create({
-  input: { height: 40, margin: 12, borderWidth: 1, padding: 10 },
-  itemContainer: {
-    borderWidth: 1,
-    borderColor: '#333',
-    borderRadius: 8,
-    margin: 12,
-    padding: 10,
-    marginVertical: 6,
-    backgroundColor: '#f8f8f8',
-  },
-});
+
 export default ItemProps;

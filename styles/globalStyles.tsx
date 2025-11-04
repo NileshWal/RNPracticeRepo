@@ -54,4 +54,25 @@ export const globalStyles = (isDarkMode: Boolean) =>
       textAlign: 'left',
       flex: 1, // allows text to take remaining space
     },
+    customTextTitleText: {
+      height: 40,
+      margin: 12,
+      padding: 10,
+      fontSize: 18,
+      fontWeight: '500',
+      color: '#222',
+      marginVertical: 8,
+      marginHorizontal: 12,
+    },
+    //props styles
+    itemPropsContainer: {
+      height: 40,
+      borderWidth: 1,
+      borderColor: '#333',
+      borderRadius: 8,
+      margin: 12,
+      padding: 10,
+      marginVertical: 6,
+      backgroundColor: '#f8f8f8',
+    },
   });

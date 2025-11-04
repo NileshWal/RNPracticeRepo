@@ -1,23 +1,17 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  useColorScheme,
-} from 'react-native';
+import { View, Text, StatusBar, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { globalStyles } from '../styles/globalStyles';
 
 const ToolBar = ({
   title,
+  isDarkMode,
   onBackPress,
 }: {
   title: string;
+  isDarkMode: Boolean;
   onBackPress?: () => void;
 }) => {
-  const scheme = useColorScheme(); // 'dark' or 'light'
-  const isDarkMode = scheme === 'dark';
   const styles = globalStyles(isDarkMode);
 
   const insets = useSafeAreaInsets();
@@ -32,7 +26,7 @@ const ToolBar = ({
       <StatusBar
         translucent={false}
         backgroundColor="#6200EE"
-        barStyle={scheme === 'dark' ? 'light-content' : 'dark-content'}
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />
 
       {/* Left button (optional back button) */}

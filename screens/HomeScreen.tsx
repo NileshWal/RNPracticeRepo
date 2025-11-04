@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   View,
+  Text,
   TextInput,
   FlatList,
   useColorScheme,
@@ -23,12 +24,18 @@ const HomeScreen: React.FC = () => {
   const [data, setData] = useState<ListItem[]>([]);
   const [filteredData, setFilteredData] = useState<ListItem[]>([]);
 
+  const [stateText, setStateText] = useState(0);
+
   useEffect(() => {
     console.log('HomeScreen mounted');
     const mockData = generateMockData();
     setData(mockData);
     setFilteredData(mockData);
   }, []);
+
+  useEffect(() => {
+    console.log('HomeScreen mounted ' + stateText);
+  }, [stateText]);
 
   // Handle search input change
   const handleSearch = (text: string) => {
@@ -46,7 +53,7 @@ const HomeScreen: React.FC = () => {
   };
 
   const renderItem = ({ item }: { item: ListItem }) => (
-    <ItemProps name={item.title} count={item.id} />
+    <ItemProps name={item.title} count={item.id} isDarkMode={isDarkMode} />
   );
 
   return (
@@ -58,9 +65,19 @@ const HomeScreen: React.FC = () => {
         },
       ]}
     >
-      <ToolBar title="My App" />
+      <ToolBar title="My App" isDarkMode={isDarkMode} />
       <View style={uiElements.contentContainer}>
-        <CustomText />
+        <CustomText isDarkMode={isDarkMode} />
+
+        <Text
+          style={uiElements.customTextTitleText}
+          onPress={() => {
+            setStateText(stateText + 1);
+          }}
+        >
+          {stateText}
+        </Text>
+
         <TextInput
           style={uiElements.input}
           placeholder="Search text..."
