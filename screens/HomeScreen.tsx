@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   SafeAreaView,
   View,
   Text,
   TextInput,
   FlatList,
-  useColorScheme,
+  ColorValue,
 } from 'react-native';
 import CustomText from '../components/CustomText';
 import ItemProps from '../components/ItemProps';
-import ToolBar from '../components/ToolBar';
 import { generateMockData } from '../data/MockData';
 import { globalStyles } from '../styles/globalStyles';
 import { ListItem } from '../types/common';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ThemeContext } from '../context/ThemeContext';
 
 const HomeScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
-  const scheme = useColorScheme(); // 'dark' or 'light'
-  const isDarkMode = scheme === 'dark';
-  const uiElements = globalStyles(isDarkMode);
+  const isDarkTheme = useContext(ThemeContext);
+  const uiElements = globalStyles(isDarkTheme);
   const [searchText, setSearchText] = useState<string>('');
   const [data, setData] = useState<ListItem[]>([]);
   const [filteredData, setFilteredData] = useState<ListItem[]>([]);
-
   const [stateText, setStateText] = useState(0);
 
   useEffect(() => {
@@ -53,8 +51,11 @@ const HomeScreen: React.FC = () => {
   };
 
   const renderItem = ({ item }: { item: ListItem }) => (
-    <ItemProps name={item.title} count={item.id} isDarkMode={isDarkMode} />
+    <ItemProps name={item.title} count={item.id} isDarkMode={isDarkTheme} />
   );
+
+  const themeColor = (item: boolean): ColorValue =>
+    item ? '#222222' : '#ffffff';
 
   return (
     <SafeAreaView
@@ -65,10 +66,14 @@ const HomeScreen: React.FC = () => {
         },
       ]}
     >
-      <ToolBar title="My App" isDarkMode={isDarkMode} />
-      <View style={uiElements.contentContainer}>
-        <CustomText isDarkMode={isDarkMode} />
+      <View style={{ backgroundColor: themeColor(isDarkTheme) }}>
+        <Text style={{ color: themeColor(!isDarkTheme) }}>
+          Current Theme: {isDarkTheme ? 'Dark' : 'Light'}
+        </Text>
+      </View>
 
+      <View style={uiElements.contentContainer}>
+        <CustomText isDarkMode={isDarkTheme} />
         <Text
           style={uiElements.customTextTitleText}
           onPress={() => {
