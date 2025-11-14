@@ -14,8 +14,10 @@ import { globalStyles } from '../styles/globalStyles';
 import { ListItem } from '../types/common';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ThemeContext } from '../context/ThemeContext';
+import CustomLogs from '../components/CustomLogs';
 
 const HomeScreen: React.FC = () => {
+  const TAG = 'HomeScreen';
   const insets = useSafeAreaInsets();
   const isDarkTheme = useContext(ThemeContext);
   const uiElements = globalStyles(isDarkTheme);
@@ -25,14 +27,14 @@ const HomeScreen: React.FC = () => {
   const [stateText, setStateText] = useState(0);
 
   useEffect(() => {
-    console.log('HomeScreen mounted');
+    CustomLogs.debug(TAG, 'HomeScreen mounted');
     const mockData = generateMockData();
     setData(mockData);
     setFilteredData(mockData);
   }, []);
 
   useEffect(() => {
-    console.log('HomeScreen mounted ' + stateText);
+    CustomLogs.debug(TAG, 'HomeScreen mounted ' + stateText);
   }, [stateText]);
 
   // Handle search input change
