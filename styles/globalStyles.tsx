@@ -18,6 +18,7 @@ export const globalStyles = (isDarkMode: Boolean) =>
       paddingHorizontal: 10,
       marginVertical: 6,
       marginHorizontal: 12,
+      color: '#000000',
     },
     contentContainer: {
       flex: 1,
@@ -74,5 +75,21 @@ export const globalStyles = (isDarkMode: Boolean) =>
       padding: 10,
       marginVertical: 6,
       backgroundColor: '#f8f8f8',
+    },
+    //image dimens
+    imageDimen: {
+      width: 200,
+      height: 100,
+      backgroundColor: 'red',
+    },
+    //view dimens
+    viewDimen: {
+      height: 20,
+      backgroundColor: '#ffffff',
+    },
+    //sample text dimens
+    sampleTextDimen: {
+      backgroundColor: '#ffffff',
+      color: '#000000',
     },
   });

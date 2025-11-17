@@ -6,13 +6,15 @@
  */
 
 import React, { useState } from 'react';
-import { Button, View, useColorScheme, Text } from 'react-native';
+import { Button, View, useColorScheme, Text, Image } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeContext } from './context/ThemeContext';
 import ToolBar from './components/ToolBar';
 import useToggle from './customHooks/useToggle';
 import MyText from './components/MyText';
+import { globalStyles } from './styles/globalStyles';
+import CustomLogs from './components/CustomLogs';
 
 function App() {
   // const getUser = _userName => {
@@ -24,10 +26,15 @@ function App() {
   //   .then(val => console.log('success val ' + val))
   //   .catch(err => console.error('error val ' + err));
 
+  const TAG = 'App';
   const scheme = useColorScheme(); // 'dark' or 'light'
   const isDarkMode = scheme === 'dark';
+  const globalStyle = globalStyles(isDarkMode);
   const [isDarkTheme, setIsDarkTheme] = useState(isDarkMode);
   const [showText, setShowText] = useState(true);
+  const [imageSource, setImageSource] = useState({
+    uri: 'https://example.com',
+  });
 
   const toggleTheme = () => {
     //setIsDarkTheme(!isDarkTheme);
@@ -42,11 +49,24 @@ function App() {
         <ToolBar title="My App" isDarkMode={isDarkTheme} />
         {showText && <MyText name="Nilesh" />}
         {/* <MyText name={'Nilesh'} /> */}
+        <View style={globalStyle.viewDimen} />
+        <Text style={globalStyle.sampleTextDimen}>{isOn ? 'ON' : 'OFF'}</Text>
         <Button title="Toggle Theme" onPress={toggleTheme} />
-        <View style={{ height: 20, backgroundColor: '#ffffff' }} />
-        <Text style={{ backgroundColor: '#ffffff', color: '#000000' }}>
-          {isOn ? 'ON' : 'OFF'}
-        </Text>
+        {/* <Image
+          source={imageSource}
+          style={globalStyle.imageDimen}
+          resizeMode={'center'}
+          onError={() => {
+            CustomLogs.debug(TAG, 'Error while loading image');
+            setImageSource(require('./assets/images/cake.png'));
+          }}
+        />
+        <Image
+          source={{
+            uri: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1089&q=80',
+          }}
+          style={globalStyle.imageDimen}
+        /> */}
         <HomeScreen />
       </SafeAreaProvider>
     </ThemeContext.Provider>

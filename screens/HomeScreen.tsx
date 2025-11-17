@@ -22,6 +22,7 @@ const HomeScreen: React.FC = () => {
   const isDarkTheme = useContext(ThemeContext);
   const uiElements = globalStyles(isDarkTheme);
   const [searchText, setSearchText] = useState<string>('');
+  const [passwordText, setPasswordText] = useState<string>('');
   const [data, setData] = useState<ListItem[]>([]);
   const [filteredData, setFilteredData] = useState<ListItem[]>([]);
   const [stateText, setStateText] = useState(0);
@@ -84,13 +85,24 @@ const HomeScreen: React.FC = () => {
         >
           {stateText}
         </Text>
-
         <TextInput
           style={uiElements.input}
           placeholder="Search text..."
           placeholderTextColor="#888"
           onChangeText={handleSearch}
           value={searchText}
+          autoFocus={true}
+        />
+        <TextInput
+          style={uiElements.input}
+          placeholder="Password"
+          placeholderTextColor="#888"
+          onChangeText={value => {
+            CustomLogs.debug(TAG, 'password valus ' + value);
+            setPasswordText(value);
+          }}
+          value={passwordText}
+          secureTextEntry={true}
         />
         <FlatList
           data={filteredData}
