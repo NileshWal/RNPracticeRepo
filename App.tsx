@@ -6,7 +6,14 @@
  */
 
 import React, { useState } from 'react';
-import { Button, View, useColorScheme, Text, Image } from 'react-native';
+import {
+  Pressable,
+  View,
+  useColorScheme,
+  Text,
+  TextInput,
+  Alert,
+} from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeContext } from './context/ThemeContext';
@@ -42,6 +49,41 @@ function App() {
   };
 
   const [isOn, toggleIsOn] = useToggle(false);
+  const [emailText, setEmailText] = useState<string>('');
+  const [passwordText, setPasswordText] = useState<string>('');
+
+  const handleSubmit = () => {
+    if (!emailText.trim()) {
+      alert('Please enter your email');
+      return;
+    }
+
+    if (!validateEmail(emailText)) {
+      alert('Enter a valid email address');
+      return;
+    }
+
+    if (!passwordText.trim()) {
+      alert('Please enter your password');
+      return;
+    }
+
+    if (passwordText.length < 6) {
+      alert('Password must be at least 6 characters');
+      return;
+    }
+
+    toggleTheme();
+  };
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const alert = (message: string) => {
+    Alert.alert(message);
+  };
 
   return (
     <ThemeContext.Provider value={isDarkTheme}>
@@ -50,8 +92,37 @@ function App() {
         {showText && <MyText name="Nilesh" />}
         {/* <MyText name={'Nilesh'} /> */}
         <View style={globalStyle.viewDimen} />
-        <Text style={globalStyle.sampleTextDimen}>{isOn ? 'ON' : 'OFF'}</Text>
-        <Button title="Toggle Theme" onPress={toggleTheme} />
+        <View style={globalStyle.viewContainer}>
+          <Text style={globalStyle.sampleTextDimen}>{isOn ? 'ON' : 'OFF'}</Text>
+          <TextInput
+            style={globalStyle.input}
+            placeholder="Email"
+            placeholderTextColor="#888"
+            onChangeText={value => {
+              CustomLogs.debug(TAG, 'email value ' + value);
+              setEmailText(value);
+            }}
+            value={emailText}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+            textContentType="emailAddress"
+          />
+          <TextInput
+            style={globalStyle.input}
+            placeholder="Password"
+            placeholderTextColor="#888"
+            onChangeText={value => {
+              CustomLogs.debug(TAG, 'password valus ' + value);
+              setPasswordText(value);
+            }}
+            value={passwordText}
+            secureTextEntry={true}
+          />
+          <Pressable style={globalStyle.buttonDimen} onPress={handleSubmit}>
+            <Text style={globalStyle.buttonText}>Toggle Theme</Text>
+          </Pressable>
+        </View>
         {/* <Image
           source={imageSource}
           style={globalStyle.imageDimen}
@@ -67,6 +138,7 @@ function App() {
           }}
           style={globalStyle.imageDimen}
         /> */}
+        <View style={globalStyle.viewDimen} />
         <HomeScreen />
       </SafeAreaProvider>
     </ThemeContext.Provider>

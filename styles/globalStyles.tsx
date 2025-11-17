@@ -16,9 +16,10 @@ export const globalStyles = (isDarkMode: Boolean) =>
       borderColor: '#CCC',
       borderRadius: 8,
       paddingHorizontal: 10,
-      marginVertical: 6,
-      marginHorizontal: 12,
+      marginVertical: 2,
+      marginHorizontal: 4,
       color: '#000000',
+      backgroundColor: '#ffffff',
     },
     contentContainer: {
       flex: 1,
@@ -87,9 +88,25 @@ export const globalStyles = (isDarkMode: Boolean) =>
       height: 20,
       backgroundColor: '#ffffff',
     },
+    //view container
+    viewContainer: {
+      backgroundColor: '#ffffff',
+    },
     //sample text dimens
     sampleTextDimen: {
       backgroundColor: '#ffffff',
       color: '#000000',
+    },
+    buttonDimen: {
+      borderWidth: 2,
+      backgroundColor: '#007AFF',
+      padding: 12,
+      borderRadius: 8,
+      alignItems: 'center',
+    },
+    buttonText: {
+      color: '#ffffff',
+      fontSize: 16,
+      fontWeight: '600',
     },
   });

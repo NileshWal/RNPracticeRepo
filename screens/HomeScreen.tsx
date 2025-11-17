@@ -6,6 +6,7 @@ import {
   TextInput,
   FlatList,
   ColorValue,
+  ScrollView,
 } from 'react-native';
 import CustomText from '../components/CustomText';
 import ItemProps from '../components/ItemProps';
@@ -22,7 +23,6 @@ const HomeScreen: React.FC = () => {
   const isDarkTheme = useContext(ThemeContext);
   const uiElements = globalStyles(isDarkTheme);
   const [searchText, setSearchText] = useState<string>('');
-  const [passwordText, setPasswordText] = useState<string>('');
   const [data, setData] = useState<ListItem[]>([]);
   const [filteredData, setFilteredData] = useState<ListItem[]>([]);
   const [stateText, setStateText] = useState(0);
@@ -69,49 +69,41 @@ const HomeScreen: React.FC = () => {
         },
       ]}
     >
-      <View style={{ backgroundColor: themeColor(isDarkTheme) }}>
-        <Text style={{ color: themeColor(!isDarkTheme) }}>
-          Current Theme: {isDarkTheme ? 'Dark' : 'Light'}
-        </Text>
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false} nestedScrollEnabled>
+        <View style={{ backgroundColor: themeColor(isDarkTheme) }}>
+          <Text style={{ color: themeColor(!isDarkTheme) }}>
+            Current Theme: {isDarkTheme ? 'Dark' : 'Light'}
+          </Text>
+        </View>
 
-      <View style={uiElements.contentContainer}>
-        <CustomText isDarkMode={isDarkTheme} />
-        <Text
-          style={uiElements.customTextTitleText}
-          onPress={() => {
-            setStateText(stateText + 1);
-          }}
-        >
-          {stateText}
-        </Text>
-        <TextInput
-          style={uiElements.input}
-          placeholder="Search text..."
-          placeholderTextColor="#888"
-          onChangeText={handleSearch}
-          value={searchText}
-          autoFocus={true}
-        />
-        <TextInput
-          style={uiElements.input}
-          placeholder="Password"
-          placeholderTextColor="#888"
-          onChangeText={value => {
-            CustomLogs.debug(TAG, 'password valus ' + value);
-            setPasswordText(value);
-          }}
-          value={passwordText}
-          secureTextEntry={true}
-        />
-        <FlatList
-          data={filteredData}
-          keyExtractor={item => item.id.toString()}
-          renderItem={renderItem}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={uiElements.listContainer}
-        />
-      </View>
+        <View style={uiElements.contentContainer}>
+          <CustomText isDarkMode={isDarkTheme} />
+          <Text
+            style={uiElements.customTextTitleText}
+            onPress={() => {
+              setStateText(stateText + 1);
+            }}
+          >
+            {stateText}
+          </Text>
+          <TextInput
+            style={uiElements.input}
+            placeholder="Search text..."
+            placeholderTextColor="#888"
+            onChangeText={handleSearch}
+            value={searchText}
+            autoFocus={true}
+          />
+          <FlatList
+            nestedScrollEnabled
+            data={filteredData}
+            keyExtractor={item => item.id.toString()}
+            renderItem={renderItem}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={uiElements.listContainer}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
