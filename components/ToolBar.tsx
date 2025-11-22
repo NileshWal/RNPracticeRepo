@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StatusBar, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { globalStyles } from '../styles/globalStyles';
+import { globalStyles } from '../styles/GlobalStyles';
 
 const ToolBar = ({
   title,

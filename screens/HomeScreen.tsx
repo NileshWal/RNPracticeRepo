@@ -7,15 +7,18 @@ import {
   FlatList,
   ColorValue,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import CustomText from '../components/CustomText';
 import ItemProps from '../components/ItemProps';
 import { generateMockData } from '../data/MockData';
-import { globalStyles } from '../styles/globalStyles';
+import { globalStyles } from '../styles/GlobalStyles';
 import { ListItem } from '../types/common';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ThemeContext } from '../context/ThemeContext';
 import CustomLogs from '../components/CustomLogs';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 const HomeScreen: React.FC = () => {
   const TAG = 'HomeScreen';
@@ -75,7 +78,9 @@ const HomeScreen: React.FC = () => {
             Current Theme: {isDarkTheme ? 'Dark' : 'Light'}
           </Text>
         </View>
-
+        <TouchableOpacity>
+          <FontAwesomeIcon icon={faEnvelope} />
+        </TouchableOpacity>
         <View style={uiElements.contentContainer}>
           <CustomText isDarkMode={isDarkTheme} />
           <Text

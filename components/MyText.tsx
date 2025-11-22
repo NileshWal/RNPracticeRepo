@@ -1,6 +1,8 @@
-import { Component, useState, useEffect } from 'react';
+import { Component, useState, useEffect, useContext } from 'react';
 import { Text } from 'react-native';
 import CustomLogs from '../components/CustomLogs';
+import { ThemeContext } from '../context/ThemeContext';
+import { globalStyles } from '../styles/GlobalStyles';
 
 // Define your prop types
 interface MyTextProps {
@@ -16,6 +18,8 @@ const MyText = (props: MyTextProps) => {
   const TAG = 'MyText';
 
   const [fullName, setFullName] = useState('');
+  const isDarkTheme = useContext(ThemeContext);
+  const uiElements = globalStyles(isDarkTheme);
 
   useEffect(() => {
     CustomLogs.debug(TAG, 'Our component has been mounted');
@@ -30,7 +34,7 @@ const MyText = (props: MyTextProps) => {
 
   return (
     <Text
-      style={{ color: 'green', backgroundColor: '#ffffff' }}
+      style={uiElements.myTextComponent}
       onPress={() => setFullName('Nilesh Here')}
     >
       Hello! {props.name} React native world from {fullName}.

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Alert } from 'react-native';
-import { globalStyles } from '../styles/globalStyles';
+import { globalStyles } from '../styles/GlobalStyles';
 
 type ItemPropsType = { name: string; count: number; isDarkMode: Boolean };
 

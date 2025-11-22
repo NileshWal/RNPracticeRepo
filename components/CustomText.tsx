@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text } from 'react-native';
-import { globalStyles } from '../styles/globalStyles';
+import { globalStyles } from '../styles/GlobalStyles';
 
 const CustomText = ({ isDarkMode }: { isDarkMode: Boolean }) => {
   const uiElements = globalStyles(isDarkMode);

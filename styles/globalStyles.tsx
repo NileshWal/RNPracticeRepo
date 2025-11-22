@@ -1,10 +1,20 @@
 import { StyleSheet } from 'react-native';
+import { getFontFamily } from '../utils/FontHelper';
 
 export const globalStyles = (isDarkMode: Boolean) =>
   StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: isDarkMode ? '#FFFFFF' : '#FFFFFF',
+    },
+    safeAreaStyle: {
+      flex: 1,
+      backgroundColor: 'white',
+    },
+    titleStyle: {
+      color: '#022150',
+      fontFamily: getFontFamily('Inter_18pt', '600'),
+      fontSize: 24,
     },
     text: {
       fontSize: 16,
@@ -85,17 +95,25 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     //view dimens
     viewDimen: {
-      height: 20,
+      height: 2,
       backgroundColor: '#ffffff',
     },
     //view container
     viewContainer: {
+      borderWidth: 1,
+      padding: 12,
+      backgroundColor: '#ffffff',
+    },
+    myTextComponent: {
+      color: 'green',
       backgroundColor: '#ffffff',
     },
     //sample text dimens
     sampleTextDimen: {
       backgroundColor: '#ffffff',
       color: '#000000',
+      fontSize: 50,
+      fontFamily: getFontFamily('Inter_18pt', '500'),
     },
     buttonDimen: {
       borderWidth: 2,
@@ -108,5 +126,60 @@ export const globalStyles = (isDarkMode: Boolean) =>
       color: '#ffffff',
       fontSize: 16,
       fontWeight: '600',
+    },
+    //SocialMediaScreen view
+    viewStyle: {
+      marginLeft: 27,
+      marginRight: 17,
+      marginTop: 30,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    messageIconStyle: {
+      padding: 10,
+      backgroundColor: '#F9FAFB',
+      borderRadius: '100',
+    },
+    messageNumberContainer: {
+      justifyContent: 'center',
+      backgroundColor: '#F35BAC',
+      flexDirection: 'row',
+      width: 10,
+      height: 10,
+      borderRadius: 10,
+      alignItems: 'center',
+      position: 'absolute',
+      right: 6,
+      top: 7,
+    },
+    messageNumberStyle: {
+      color: '#FFFFFF',
+      fontSize: 6,
+      fontFamily: getFontFamily('Inter_18pt', '600'),
+    },
+    userStoryContainer: {
+      marginTop: 20,
+      marginHorizontal: 28,
+    },
+    storyContainer: {
+      marginRight: 20,
+    },
+    firstName: {
+      fontFamily: getFontFamily('Inter', '500'),
+      fontSize: 14,
+      color: '#022150',
+      marginTop: 8,
+      textAlign: 'center',
+    },
+    userImageContainer: {
+      borderColor: '#F35BAC',
+      borderWidth: 1,
+      padding: 3,
+    },
+    userProfileImageContainer: {
+      borderColor: '#F35BAC',
+      borderWidth: 1,
+      padding: 3,
     },
   });
