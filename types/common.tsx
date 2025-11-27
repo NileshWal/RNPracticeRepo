@@ -13,3 +13,14 @@ export interface UserProfileImage {
   profileImage: any;
   imageDimensions: number;
 }
+
+export interface UserPostsItem {
+  firstName: string;
+  lastName: string;
+  location: string;
+  image: any;
+  profileImage: any;
+  likes: number;
+  comments: number;
+  bookmarks: number;
+}

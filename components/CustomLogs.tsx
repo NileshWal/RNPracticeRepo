@@ -1,5 +1,3 @@
-import React from 'react';
-
 class CustomLogs {
   private static isDebug = __DEV__; // same as BuildConfig.DEBUG
 

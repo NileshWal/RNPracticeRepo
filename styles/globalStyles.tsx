@@ -182,4 +182,67 @@ export const globalStyles = (isDarkMode: Boolean) =>
       borderWidth: 1,
       padding: 3,
     },
+    userContainer: {
+      flexDirection: 'row',
+      paddingLeft: 20,
+      paddingRight: 20,
+    },
+    userTextContainer: {
+      justifyContent: 'center',
+      marginLeft: 10,
+    },
+    user: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingLeft: 20,
+      paddingRight: 20,
+    },
+    username: {
+      color: '#000',
+      fontFamily: getFontFamily('Inter_18pt', '600'), //this font weight should have been a string
+      fontSize: 16,
+    },
+    location: {
+      color: '#79869F',
+      marginLeft: -4, //This is not really needed I just missed a space on location text right before the location prop, that is why we needed marginLeft
+      fontFamily: getFontFamily('Inter', '400'), //this font weight should have been a string
+      fontSize: 12,
+      marginTop: 5,
+    },
+    postImage: {
+      alignItems: 'center',
+      marginVertical: 20,
+    },
+    userPostContainer: {
+      marginTop: 10,
+      marginLeft: 5,
+      marginRight: 5,
+      paddingBottom: 0,
+      borderBottomWidth: 1,
+      borderBottomColor: '#EFF2F6',
+    },
+    userPostThreeDot: {
+      marginRight: 30,
+    },
   });
+
+//Dynamic styles
+export const dynamicStyles = {
+  userPostViewStyleOne: (
+    marginLeft: number = 10,
+    flexDirection: 'row' | 'column' | 'row-reverse' | 'column-reverse',
+    paddingBottom: number = 0,
+  ) => ({
+    marginLeft,
+    flexDirection,
+    paddingBottom,
+  }),
+  userPostViewStyleTwo: (marginLeft: number = 10, color: string) => ({
+    marginLeft,
+    color,
+  }),
+  userPostColourStyle: (color: string = '#79869F') => ({
+    color,
+  }),
+};
