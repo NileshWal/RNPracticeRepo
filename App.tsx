@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { View, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeContext } from './context/ThemeContext';
@@ -14,11 +14,11 @@ import { globalStyles } from './styles/GlobalStyles';
 import SocialMediaScreen from './screens/SocialMediaScreen';
 
 function App() {
-  const TAG = 'App';
+  // const TAG = 'App';
   const scheme = useColorScheme(); // 'dark' or 'light'
   const isDarkMode = scheme === 'dark';
   const globalStyle = globalStyles(isDarkMode);
-  const [isDarkTheme, setIsDarkTheme] = useState(isDarkMode);
+  const isDarkTheme = isDarkMode;
 
   return (
     <ThemeContext.Provider value={isDarkTheme}>

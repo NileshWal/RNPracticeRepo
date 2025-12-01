@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { getFontFamily } from '../utils/FontHelper';
+import { fontSizeScale, horizontalScale, verticalScale } from './Scaling';
 
 export const globalStyles = (isDarkMode: Boolean) =>
   StyleSheet.create({
-    container: {
+    safeAreaContainer: {
       flex: 1,
-      backgroundColor: isDarkMode ? '#FFFFFF' : '#FFFFFF',
+      backgroundColor: isDarkMode ? 'white' : 'white',
     },
     safeAreaStyle: {
       flex: 1,
@@ -14,10 +15,10 @@ export const globalStyles = (isDarkMode: Boolean) =>
     titleStyle: {
       color: '#022150',
       fontFamily: getFontFamily('Inter_18pt', '600'),
-      fontSize: 24,
+      fontSize: fontSizeScale(24),
     },
     text: {
-      fontSize: 16,
+      fontSize: fontSizeScale(16),
       color: '#333',
     },
     input: {
@@ -26,10 +27,10 @@ export const globalStyles = (isDarkMode: Boolean) =>
       borderColor: '#CCC',
       borderRadius: 8,
       paddingHorizontal: 10,
-      marginVertical: 2,
-      marginHorizontal: 4,
+      marginVertical: verticalScale(2),
+      marginHorizontal: horizontalScale(4),
       color: '#000000',
-      backgroundColor: '#ffffff',
+      backgroundColor: 'white',
     },
     contentContainer: {
       flex: 1,
@@ -57,11 +58,11 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     backText: {
       color: '#FFF',
-      fontSize: 22,
+      fontSize: fontSizeScale(22),
     },
     toolbarTitle: {
       color: '#FFF',
-      fontSize: 20,
+      fontSize: fontSizeScale(20),
       fontWeight: '600',
       textAlign: 'left',
       flex: 1, // allows text to take remaining space
@@ -70,11 +71,11 @@ export const globalStyles = (isDarkMode: Boolean) =>
       height: 40,
       margin: 12,
       padding: 10,
-      fontSize: 18,
+      fontSize: fontSizeScale(18),
       fontWeight: '500',
       color: '#222',
-      marginVertical: 8,
-      marginHorizontal: 12,
+      marginVertical: verticalScale(8),
+      marginHorizontal: horizontalScale(12),
     },
     //props styles
     itemPropsContainer: {
@@ -84,7 +85,7 @@ export const globalStyles = (isDarkMode: Boolean) =>
       borderRadius: 8,
       margin: 12,
       padding: 10,
-      marginVertical: 6,
+      marginVertical: verticalScale(6),
       backgroundColor: '#f8f8f8',
     },
     //image dimens
@@ -95,24 +96,24 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     //view dimens
     viewDimen: {
-      height: 2,
-      backgroundColor: '#ffffff',
+      height: 1,
+      backgroundColor: 'white',
     },
     //view container
     viewContainer: {
       borderWidth: 1,
       padding: 12,
-      backgroundColor: '#ffffff',
+      backgroundColor: 'white',
     },
     myTextComponent: {
       color: 'green',
-      backgroundColor: '#ffffff',
+      backgroundColor: 'white',
     },
     //sample text dimens
     sampleTextDimen: {
-      backgroundColor: '#ffffff',
+      backgroundColor: 'white',
       color: '#000000',
-      fontSize: 50,
+      fontSize: fontSizeScale(50),
       fontFamily: getFontFamily('Inter_18pt', '500'),
     },
     buttonDimen: {
@@ -124,14 +125,12 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     buttonText: {
       color: '#ffffff',
-      fontSize: 16,
+      fontSize: fontSizeScale(16),
       fontWeight: '600',
     },
     //SocialMediaScreen view
     viewStyle: {
-      marginLeft: 27,
-      marginRight: 17,
-      marginTop: 30,
+      marginHorizontal: horizontalScale(20),
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -155,21 +154,21 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     messageNumberStyle: {
       color: '#FFFFFF',
-      fontSize: 6,
+      fontSize: fontSizeScale(6),
       fontFamily: getFontFamily('Inter_18pt', '600'),
     },
     userStoryContainer: {
-      marginTop: 20,
-      marginHorizontal: 28,
+      marginTop: verticalScale(15),
+      marginHorizontal: horizontalScale(20),
     },
     storyContainer: {
-      marginRight: 20,
+      marginRight: horizontalScale(20),
     },
     firstName: {
-      fontFamily: getFontFamily('Inter', '500'),
-      fontSize: 14,
+      fontFamily: getFontFamily('Inter_18pt', '300'),
+      fontSize: fontSizeScale(14),
       color: '#022150',
-      marginTop: 8,
+      marginTop: verticalScale(8),
       textAlign: 'center',
     },
     userImageContainer: {
@@ -184,46 +183,44 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     userContainer: {
       flexDirection: 'row',
-      paddingLeft: 20,
-      paddingRight: 20,
+      paddingHorizontal: horizontalScale(10),
     },
     userTextContainer: {
       justifyContent: 'center',
-      marginLeft: 10,
+      marginLeft: horizontalScale(10),
     },
     user: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingLeft: 20,
-      paddingRight: 20,
+      paddingHorizontal: horizontalScale(10),
     },
     username: {
       color: '#000',
       fontFamily: getFontFamily('Inter_18pt', '600'), //this font weight should have been a string
-      fontSize: 16,
+      fontSize: fontSizeScale(16),
     },
     location: {
       color: '#79869F',
-      marginLeft: -4, //This is not really needed I just missed a space on location text right before the location prop, that is why we needed marginLeft
+      marginLeft: horizontalScale(-4), //This is not really needed I just missed a space on location text right before the location prop, that is why we needed marginLeft
       fontFamily: getFontFamily('Inter', '400'), //this font weight should have been a string
-      fontSize: 12,
-      marginTop: 5,
+      fontSize: fontSizeScale(12),
+      marginTop: verticalScale(5),
     },
     postImage: {
       alignItems: 'center',
-      marginVertical: 20,
+      marginVertical: verticalScale(18),
+      marginHorizontal: horizontalScale(10),
     },
     userPostContainer: {
-      marginTop: 10,
-      marginLeft: 5,
-      marginRight: 5,
-      paddingBottom: 0,
+      marginTop: verticalScale(10),
+      marginHorizontal: horizontalScale(5),
+      paddingBottom: verticalScale(0),
       borderBottomWidth: 1,
       borderBottomColor: '#EFF2F6',
     },
     userPostThreeDot: {
-      marginRight: 30,
+      marginRight: horizontalScale(30),
     },
   });
 

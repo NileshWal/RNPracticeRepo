@@ -66,7 +66,7 @@ const HomeScreen: React.FC = () => {
   return (
     <SafeAreaView
       style={[
-        uiElements.container,
+        uiElements.safeAreaContainer,
         {
           paddingBottom: insets.bottom, // ensures content stays above navigation bar
         },

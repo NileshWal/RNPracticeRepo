@@ -57,7 +57,7 @@ const UserPost: React.FC<UserPostsItemType> = ({
       <View style={uiElements.postImage}>
         <Image source={image} />
       </View>
-      <View style={dynamicStyles.userPostViewStyleOne(47, 'row', 10)}>
+      <View style={dynamicStyles.userPostViewStyleOne(27, 'row', 10)}>
         <View style={dynamicStyles.userPostViewStyleOne(0, 'row')}>
           <FontAwesomeIcon
             icon={faHeart}

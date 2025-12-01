@@ -35,9 +35,6 @@ const SocialMediaScreen: React.FC = () => {
   >([]);
   const [isLoadingUserPosts, setIsLoadingUserPosts] = useState(false);
 
-  // const [screenData, setScreenData] = useState(Dimensions.get('screen'));
-  // CustomLogs.debug(TAG, 'Dimensions ' + JSON.stringify(screenData));
-
   useEffect(() => {
     //For user stories
     setIsLoadingUserStories(true);
@@ -58,11 +55,6 @@ const SocialMediaScreen: React.FC = () => {
     );
     setUserPostsRenderData(getPostInitialData);
     setIsLoadingUserPosts(false);
-
-    // Dimensions.addEventListener('change', result => {
-    //   CustomLogs.debug(TAG, 'Dimensions changed ' + JSON.stringify(screenData));
-    //   setScreenData(result.screen);
-    // });
   }, []);
 
   /**
