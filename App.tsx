@@ -6,12 +6,13 @@
  */
 
 import React from 'react';
-import { View, useColorScheme } from 'react-native';
+import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeContext } from './context/ThemeContext';
 import ToolBar from './components/ToolBar';
 import { globalStyles } from './styles/GlobalStyles';
-import SocialMediaScreen from './screens/SocialMediaScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import MainNavigation from './navigation/MainNavigation';
 
 function App() {
   // const TAG = 'App';
@@ -22,11 +23,12 @@ function App() {
 
   return (
     <ThemeContext.Provider value={isDarkTheme}>
-      <SafeAreaProvider style={globalStyle.safeAreaStyle}>
-        <ToolBar title="My App" isDarkMode={isDarkTheme} />
-        <View style={globalStyle.viewDimen} />
-        <SocialMediaScreen />
-      </SafeAreaProvider>
+      <NavigationContainer>
+        <SafeAreaProvider style={globalStyle.safeAreaStyle}>
+          <ToolBar title="My App" isDarkMode={isDarkTheme} />
+          <MainNavigation />
+        </SafeAreaProvider>
+      </NavigationContainer>
     </ThemeContext.Provider>
   );
 }

@@ -4,6 +4,10 @@ import { fontSizeScale, horizontalScale, verticalScale } from './Scaling';
 
 export const globalStyles = (isDarkMode: Boolean) =>
   StyleSheet.create({
+    homeScreenSafeAreaContainer: {
+      flex: 1,
+      backgroundColor: isDarkMode ? '#b2b2b2' : '#b2b2b2',
+    },
     safeAreaContainer: {
       flex: 1,
       backgroundColor: isDarkMode ? 'white' : 'white',
@@ -22,11 +26,11 @@ export const globalStyles = (isDarkMode: Boolean) =>
       color: '#333',
     },
     input: {
-      height: 40,
+      height: verticalScale(40),
       borderWidth: 1,
       borderColor: '#CCC',
       borderRadius: 8,
-      paddingHorizontal: 10,
+      paddingHorizontal: horizontalScale(10),
       marginVertical: verticalScale(2),
       marginHorizontal: horizontalScale(4),
       color: '#000000',
@@ -34,10 +38,11 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     contentContainer: {
       flex: 1,
-      padding: 10,
+      paddingVertical: verticalScale(10),
+      paddingHorizontal: horizontalScale(10),
     },
     listContainer: {
-      paddingBottom: 20,
+      paddingBottom: verticalScale(20),
     },
     //For ToolBar
     toolbarContainer: {
@@ -51,10 +56,10 @@ export const globalStyles = (isDarkMode: Boolean) =>
       shadowOpacity: 0.2,
     },
     backButton: {
-      width: 40,
+      width: horizontalScale(40),
     },
     backButtonPlaceholder: {
-      width: 40,
+      width: horizontalScale(40),
     },
     backText: {
       color: '#FFF',
@@ -69,8 +74,8 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     customTextTitleText: {
       height: 40,
-      margin: 12,
-      padding: 10,
+      paddingHorizontal: horizontalScale(10),
+      paddingVertical: verticalScale(10),
       fontSize: fontSizeScale(18),
       fontWeight: '500',
       color: '#222',
@@ -83,9 +88,10 @@ export const globalStyles = (isDarkMode: Boolean) =>
       borderWidth: 1,
       borderColor: '#333',
       borderRadius: 8,
-      margin: 12,
-      padding: 10,
-      marginVertical: verticalScale(6),
+      marginHorizontal: horizontalScale(12),
+      paddingVertical: verticalScale(10),
+      paddingHorizontal: horizontalScale(10),
+      marginVertical: verticalScale(12),
       backgroundColor: '#f8f8f8',
     },
     //image dimens
@@ -102,7 +108,8 @@ export const globalStyles = (isDarkMode: Boolean) =>
     //view container
     viewContainer: {
       borderWidth: 1,
-      padding: 12,
+      paddingVertical: verticalScale(12),
+      paddingHorizontal: horizontalScale(12),
       backgroundColor: 'white',
     },
     myTextComponent: {
@@ -119,7 +126,8 @@ export const globalStyles = (isDarkMode: Boolean) =>
     buttonDimen: {
       borderWidth: 2,
       backgroundColor: '#007AFF',
-      padding: 12,
+      paddingVertical: verticalScale(12),
+      paddingHorizontal: horizontalScale(12),
       borderRadius: 8,
       alignItems: 'center',
     },
@@ -136,7 +144,8 @@ export const globalStyles = (isDarkMode: Boolean) =>
       justifyContent: 'space-between',
     },
     messageIconStyle: {
-      padding: 10,
+      paddingHorizontal: horizontalScale(10),
+      paddingVertical: verticalScale(10),
       backgroundColor: '#F9FAFB',
       borderRadius: '100',
     },
@@ -174,12 +183,14 @@ export const globalStyles = (isDarkMode: Boolean) =>
     userImageContainer: {
       borderColor: '#F35BAC',
       borderWidth: 1,
-      padding: 3,
+      paddingVertical: verticalScale(3),
+      paddingHorizontal: horizontalScale(3),
     },
     userProfileImageContainer: {
       borderColor: '#F35BAC',
       borderWidth: 1,
-      padding: 3,
+      paddingVertical: verticalScale(3),
+      paddingHorizontal: horizontalScale(3),
     },
     userContainer: {
       flexDirection: 'row',
@@ -213,6 +224,12 @@ export const globalStyles = (isDarkMode: Boolean) =>
       marginHorizontal: horizontalScale(10),
     },
     userPostContainer: {
+      marginHorizontal: horizontalScale(5),
+      paddingBottom: verticalScale(0),
+      borderBottomWidth: 1,
+      borderBottomColor: '#EFF2F6',
+    },
+    userPostItemContainer: {
       marginTop: verticalScale(10),
       marginHorizontal: horizontalScale(5),
       paddingBottom: verticalScale(0),

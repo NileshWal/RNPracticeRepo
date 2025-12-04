@@ -1,6 +1,5 @@
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { TouchableOpacity, View, Text, FlatList } from 'react-native';
 import { ThemeContext } from '../context/ThemeContext';
@@ -12,10 +11,11 @@ import UserStoriesItemView from '../components/userStories/UserStoriesItemView';
 import { UserPostsItem, UserStoriesItem } from '../types/common';
 import UserPost from '../components/userStories/UserPost';
 import CustomLogs from '../components/CustomLogs';
+import { verticalScale } from '../styles/Scaling';
 
 const SocialMediaScreen: React.FC = () => {
   const TAG = 'SocialMediaScreen';
-  const insets = useSafeAreaInsets();
+  //const insets = useSafeAreaInsets();
   const isDarkTheme = useContext(ThemeContext);
   const uiElements = globalStyles(isDarkTheme);
 
@@ -156,9 +156,10 @@ const SocialMediaScreen: React.FC = () => {
   return (
     <SafeAreaView
       style={[
-        uiElements.container,
+        uiElements.safeAreaContainer,
         {
-          paddingBottom: insets.bottom, // ensures content stays above navigation bar
+          // paddingBottom: verticalScale(insets.bottom), // ensures content stays above navigation bar
+          paddingBottom: verticalScale(0),
         },
       ]}
     >

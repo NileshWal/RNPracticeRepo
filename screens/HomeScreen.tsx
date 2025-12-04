@@ -19,8 +19,9 @@ import { ThemeContext } from '../context/ThemeContext';
 import CustomLogs from '../components/CustomLogs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { Routes } from '../navigation/Routes';
 
-const HomeScreen: React.FC = () => {
+const HomeScreen: React.FC = ({ navigation }) => {
   const TAG = 'HomeScreen';
   const insets = useSafeAreaInsets();
   const isDarkTheme = useContext(ThemeContext);
@@ -66,7 +67,7 @@ const HomeScreen: React.FC = () => {
   return (
     <SafeAreaView
       style={[
-        uiElements.safeAreaContainer,
+        uiElements.homeScreenSafeAreaContainer,
         {
           paddingBottom: insets.bottom, // ensures content stays above navigation bar
         },
@@ -78,7 +79,11 @@ const HomeScreen: React.FC = () => {
             Current Theme: {isDarkTheme ? 'Dark' : 'Light'}
           </Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate(Routes.SocialMedia);
+          }}
+        >
           <FontAwesomeIcon icon={faEnvelope} />
         </TouchableOpacity>
         <View style={uiElements.contentContainer}>

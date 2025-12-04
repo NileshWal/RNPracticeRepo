@@ -10,6 +10,7 @@ import {
   faMessage,
 } from '@fortawesome/free-regular-svg-icons';
 import UserProfileImage from './UserProfileImage';
+import { horizontalScale, verticalScale } from '../../styles/Scaling';
 
 type UserPostsItemType = {
   firstName: string;
@@ -36,7 +37,7 @@ const UserPost: React.FC<UserPostsItemType> = ({
   const uiElements = globalStyles(isDarkTheme);
 
   return (
-    <View style={uiElements.userPostContainer}>
+    <View style={uiElements.userPostItemContainer}>
       <View style={uiElements.user}>
         <View style={uiElements.userContainer}>
           <UserProfileImage profileImage={profileImage} imageDimensions={48} />
@@ -57,7 +58,13 @@ const UserPost: React.FC<UserPostsItemType> = ({
       <View style={uiElements.postImage}>
         <Image source={image} />
       </View>
-      <View style={dynamicStyles.userPostViewStyleOne(27, 'row', 10)}>
+      <View
+        style={dynamicStyles.userPostViewStyleOne(
+          horizontalScale(27),
+          'row',
+          verticalScale(10),
+        )}
+      >
         <View style={dynamicStyles.userPostViewStyleOne(0, 'row')}>
           <FontAwesomeIcon
             icon={faHeart}
@@ -65,35 +72,39 @@ const UserPost: React.FC<UserPostsItemType> = ({
           />
           <Text
             style={dynamicStyles.userPostViewStyleTwo(
-              3,
+              horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
           >
             {likes}
           </Text>
         </View>
-        <View style={dynamicStyles.userPostViewStyleOne(27, 'row')}>
+        <View
+          style={dynamicStyles.userPostViewStyleOne(horizontalScale(27), 'row')}
+        >
           <FontAwesomeIcon
             icon={faMessage}
             color={dynamicStyles.userPostColourStyle().color}
           />
           <Text
             style={dynamicStyles.userPostViewStyleTwo(
-              3,
+              horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
           >
             {comments}
           </Text>
         </View>
-        <View style={dynamicStyles.userPostViewStyleOne(27, 'row')}>
+        <View
+          style={dynamicStyles.userPostViewStyleOne(horizontalScale(27), 'row')}
+        >
           <FontAwesomeIcon
             icon={faBookmark}
             color={dynamicStyles.userPostColourStyle().color}
           />
           <Text
             style={dynamicStyles.userPostViewStyleTwo(
-              3,
+              horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
           >
