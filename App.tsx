@@ -24,7 +24,7 @@ function App() {
   return (
     <ThemeContext.Provider value={isDarkTheme}>
       <NavigationContainer>
-        <SafeAreaProvider style={globalStyle.safeAreaStyle}>
+        <SafeAreaProvider style={globalStyle.appSafeAreaStyle}>
           <ToolBar title="My App" isDarkMode={isDarkTheme} />
           <MainNavigation />
         </SafeAreaProvider>

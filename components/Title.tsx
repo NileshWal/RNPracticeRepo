@@ -11,7 +11,7 @@ const Title: React.FC<TitleProps> = ({ title }) => {
   const isDarkMode = scheme === 'dark';
   const styles = globalStyles(isDarkMode);
 
-  return <Text style={styles.titleStyle}>{title}</Text>;
+  return <Text style={styles.titleTextStyle}>{title}</Text>;
 };
 
 export default Title;

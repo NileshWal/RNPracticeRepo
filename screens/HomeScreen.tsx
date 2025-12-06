@@ -19,9 +19,8 @@ import { ThemeContext } from '../context/ThemeContext';
 import CustomLogs from '../components/CustomLogs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { Routes } from '../navigation/Routes';
 
-const HomeScreen: React.FC = ({ navigation }) => {
+const HomeScreen: React.FC = () => {
   const TAG = 'HomeScreen';
   const insets = useSafeAreaInsets();
   const isDarkTheme = useContext(ThemeContext);
@@ -79,11 +78,7 @@ const HomeScreen: React.FC = ({ navigation }) => {
             Current Theme: {isDarkTheme ? 'Dark' : 'Light'}
           </Text>
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate(Routes.SocialMedia);
-          }}
-        >
+        <TouchableOpacity>
           <FontAwesomeIcon icon={faEnvelope} />
         </TouchableOpacity>
         <View style={uiElements.contentContainer}>
@@ -97,7 +92,7 @@ const HomeScreen: React.FC = ({ navigation }) => {
             {stateText}
           </Text>
           <TextInput
-            style={uiElements.input}
+            style={uiElements.inputFieldStyle}
             placeholder="Search text..."
             placeholderTextColor="#888"
             onChangeText={handleSearch}

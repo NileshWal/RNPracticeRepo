@@ -156,7 +156,7 @@ const SocialMediaScreen: React.FC = () => {
   return (
     <SafeAreaView
       style={[
-        uiElements.safeAreaContainer,
+        uiElements.socialMediaSafeAreaContainer,
         {
           // paddingBottom: verticalScale(insets.bottom), // ensures content stays above navigation bar
           paddingBottom: verticalScale(0),

@@ -8,24 +8,20 @@ export const globalStyles = (isDarkMode: Boolean) =>
       flex: 1,
       backgroundColor: isDarkMode ? '#b2b2b2' : '#b2b2b2',
     },
-    safeAreaContainer: {
+    socialMediaSafeAreaContainer: {
       flex: 1,
       backgroundColor: isDarkMode ? 'white' : 'white',
     },
-    safeAreaStyle: {
+    appSafeAreaStyle: {
       flex: 1,
       backgroundColor: 'white',
     },
-    titleStyle: {
+    titleTextStyle: {
       color: '#022150',
       fontFamily: getFontFamily('Inter_18pt', '600'),
       fontSize: fontSizeScale(24),
     },
-    text: {
-      fontSize: fontSizeScale(16),
-      color: '#333',
-    },
-    input: {
+    inputFieldStyle: {
       height: verticalScale(40),
       borderWidth: 1,
       borderColor: '#CCC',
@@ -73,7 +69,7 @@ export const globalStyles = (isDarkMode: Boolean) =>
       flex: 1, // allows text to take remaining space
     },
     customTextTitleText: {
-      height: 40,
+      height: verticalScale(40),
       paddingHorizontal: horizontalScale(10),
       paddingVertical: verticalScale(10),
       fontSize: fontSizeScale(18),
@@ -84,7 +80,7 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     //props styles
     itemPropsContainer: {
-      height: 40,
+      height: verticalScale(40),
       borderWidth: 1,
       borderColor: '#333',
       borderRadius: 8,
@@ -96,13 +92,13 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     //image dimens
     imageDimen: {
-      width: 200,
-      height: 100,
+      width: horizontalScale(200),
+      height: verticalScale(100),
       backgroundColor: 'red',
     },
     //view dimens
     viewDimen: {
-      height: 1,
+      height: verticalScale(1),
       backgroundColor: 'white',
     },
     //view container
@@ -153,8 +149,8 @@ export const globalStyles = (isDarkMode: Boolean) =>
       justifyContent: 'center',
       backgroundColor: '#F35BAC',
       flexDirection: 'row',
-      width: 10,
-      height: 10,
+      width: horizontalScale(10),
+      height: verticalScale(10),
       borderRadius: 10,
       alignItems: 'center',
       position: 'absolute',
@@ -238,6 +234,61 @@ export const globalStyles = (isDarkMode: Boolean) =>
     },
     userPostThreeDot: {
       marginRight: horizontalScale(30),
+    },
+    //Profile Screen styles
+    backgroundWhite: {
+      backgroundColor: '#FFFFFF',
+    },
+    flex: {
+      flex: 1,
+    },
+    flexGrow: {
+      flexGrow: 1,
+    },
+    profileImage: {
+      width: horizontalScale(110),
+      height: horizontalScale(110),
+    },
+    profileImageContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      marginTop: verticalScale(32),
+    },
+    profileImageContent: {
+      borderWidth: 1,
+      borderColor: '#0150EC',
+      padding: horizontalScale(4),
+      borderRadius: horizontalScale(110),
+    },
+    userName: {
+      marginTop: verticalScale(20),
+      textAlign: 'center',
+      fontFamily: getFontFamily('Inter', '600'),
+      fontSize: fontSizeScale(20),
+    },
+    statAmount: {
+      fontFamily: getFontFamily('Inter', '600'),
+      fontSize: fontSizeScale(20),
+      color: '#022150',
+      textAlign: 'center',
+    },
+    statType: {
+      fontFamily: getFontFamily('Inter', '400'),
+      fontSize: fontSizeScale(16),
+      color: '#79869F',
+      textAlign: 'center',
+    },
+    statContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginHorizontal: horizontalScale(40),
+      paddingVertical: verticalScale(30),
+      borderBottomWidth: 1,
+      borderColor: '#E9EFF1',
+    },
+    statBorder: {
+      borderRightWidth: 1,
+      borderColor: '#E9EFF1',
     },
   });
 
