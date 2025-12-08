@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { ThemeContext } from '../../context/ThemeContext';
 import { globalStyles } from '../../styles/GlobalStyles';
 import UserProfileImage from './UserProfileImage';
+import CustomText from '../CustomText';
 
 type UserStoriesItemPropsType = {
   firstName: string;
@@ -21,7 +22,7 @@ const UserStoriesItemView: React.FC<UserStoriesItemPropsType> = ({
   return (
     <View style={uiElements.storyContainer}>
       <UserProfileImage profileImage={profileImage} imageDimensions={65} />
-      <Text style={uiElements.firstName}>{firstName}</Text>
+      <CustomText customStyle={uiElements.firstName} customText={firstName} />
     </View>
   );
 };

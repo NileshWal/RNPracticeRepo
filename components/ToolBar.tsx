@@ -1,8 +1,15 @@
 import React from 'react';
-import { View, Text, StatusBar, TouchableOpacity } from 'react-native';
+import { View, StatusBar, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { globalStyles } from '../styles/GlobalStyles';
+import CustomText from './CustomText';
 
+/**
+ * A customizable toolbar component with an optional back button and title.
+ * @param title - The title to display in the toolbar.
+ * @param isDarkMode - Boolean indicating if dark mode is enabled.
+ * @param onBackPress - Optional function to handle back button press.
+ */
 const ToolBar = ({
   title,
   isDarkMode,
@@ -13,7 +20,6 @@ const ToolBar = ({
   onBackPress?: () => void;
 }) => {
   const styles = globalStyles(isDarkMode);
-
   const insets = useSafeAreaInsets();
 
   return (
@@ -32,14 +38,14 @@ const ToolBar = ({
       {/* Left button (optional back button) */}
       {onBackPress ? (
         <TouchableOpacity onPress={onBackPress} style={styles.backButton}>
-          <Text style={styles.backText}>{'←'}</Text>
+          <CustomText customStyle={styles.backText} customText={'←'} />
         </TouchableOpacity>
       ) : (
         <View style={styles.backButtonPlaceholder} />
       )}
 
       {/* Title */}
-      <Text style={styles.toolbarTitle}>{title}</Text>
+      <CustomText customStyle={styles.toolbarTitle} customText={title} />
 
       {/* Right placeholder for symmetry */}
       <View style={styles.backButtonPlaceholder} />

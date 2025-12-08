@@ -1,8 +1,11 @@
 import { ThemeContext } from '../context/ThemeContext';
 import React, { useContext } from 'react';
-import { SafeAreaView, ScrollView, View, Image, Text } from 'react-native';
+import { SafeAreaView, ScrollView, View, Image } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
+import { ProfileTabNavigation } from '../navigation/MainNavigation';
+import CustomText from '../components/CustomText';
 
+/* Profile Screen Component */
 const Profile: React.FC = () => {
   // { navigation }
 
@@ -20,22 +23,43 @@ const Profile: React.FC = () => {
             />
           </View>
         </View>
-        <Text style={uiElements.userName}>Emmanuel Robertsen</Text>
+        <CustomText
+          customStyle={uiElements.userName}
+          customText={'Emmanuel Robertsen'}
+        />
         <View style={uiElements.statContainer}>
           <View>
-            <Text style={uiElements.statAmount}>45</Text>
-            <Text style={uiElements.statType}>Following</Text>
+            <CustomText customStyle={uiElements.statAmount} customText={'45'} />
+            <CustomText
+              customStyle={uiElements.statType}
+              customText={'Following'}
+            />
           </View>
           <View style={uiElements.statBorder} />
           <View>
-            <Text style={uiElements.statAmount}>30M</Text>
-            <Text style={uiElements.statType}>Followers</Text>
+            <CustomText
+              customStyle={uiElements.statAmount}
+              customText={'30M'}
+            />
+            <CustomText
+              customStyle={uiElements.statType}
+              customText={'Followers'}
+            />
           </View>
           <View style={uiElements.statBorder} />
           <View>
-            <Text style={uiElements.statAmount}>100</Text>
-            <Text style={uiElements.statType}>Posts</Text>
+            <CustomText
+              customStyle={uiElements.statAmount}
+              customText={'100'}
+            />
+            <CustomText
+              customStyle={uiElements.statType}
+              customText={'Posts'}
+            />
           </View>
+        </View>
+        <View style={uiElements.flex}>
+          <ProfileTabNavigation />
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import {
   SafeAreaView,
   View,
-  Text,
   TextInput,
   FlatList,
   ColorValue,
@@ -20,6 +19,10 @@ import CustomLogs from '../components/CustomLogs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
+/**
+ *  HomeScreen component displaying a searchable list of items.
+ * @returns {React.FC} The HomeScreen component.
+ */
 const HomeScreen: React.FC = () => {
   const TAG = 'HomeScreen';
   const insets = useSafeAreaInsets();
@@ -56,10 +59,12 @@ const HomeScreen: React.FC = () => {
     }
   };
 
+  /* Render each item in the FlatList */
   const renderItem = ({ item }: { item: ListItem }) => (
     <ItemProps name={item.title} count={item.id} isDarkMode={isDarkTheme} />
   );
 
+  /* Determine theme color based on current theme */
   const themeColor = (item: boolean): ColorValue =>
     item ? '#222222' : '#ffffff';
 
@@ -74,23 +79,19 @@ const HomeScreen: React.FC = () => {
     >
       <ScrollView showsVerticalScrollIndicator={false} nestedScrollEnabled>
         <View style={{ backgroundColor: themeColor(isDarkTheme) }}>
-          <Text style={{ color: themeColor(!isDarkTheme) }}>
-            Current Theme: {isDarkTheme ? 'Dark' : 'Light'}
-          </Text>
+          <CustomText
+            customStyle={{ color: themeColor(!isDarkTheme) }}
+            customText={'Current Theme: ' + (isDarkTheme ? 'Dark' : 'Light')}
+          />
         </View>
         <TouchableOpacity>
           <FontAwesomeIcon icon={faEnvelope} />
         </TouchableOpacity>
         <View style={uiElements.contentContainer}>
-          <CustomText isDarkMode={isDarkTheme} />
-          <Text
-            style={uiElements.customTextTitleText}
-            onPress={() => {
-              setStateText(stateText + 1);
-            }}
-          >
-            {stateText}
-          </Text>
+          <CustomText
+            customStyle={uiElements.customTextTitleText}
+            customText={(stateText + 1).toString()}
+          />
           <TextInput
             style={uiElements.inputFieldStyle}
             placeholder="Search text..."

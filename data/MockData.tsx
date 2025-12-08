@@ -1,5 +1,6 @@
 import { ListItem, UserPostsItem, UserStoriesItem } from '../types/common';
 
+/* Mock data for testing and development purposes */
 const nameList = [
   'Alice Johnson',
   'Bob Smith',
@@ -28,6 +29,8 @@ const nameList = [
   'Yara Martinez',
   'Zane Malik',
 ];
+
+/* Function to generate mock list data */
 export const generateMockData = (): ListItem[] =>
   nameList.map((name, index) => ({ id: index + 1, title: name }));
 

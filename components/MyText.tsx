@@ -1,8 +1,8 @@
-import { Component, useState, useEffect, useContext } from 'react';
-import { Text } from 'react-native';
+import { useState, useEffect, useContext } from 'react';
 import CustomLogs from '../components/CustomLogs';
 import { ThemeContext } from '../context/ThemeContext';
 import { globalStyles } from '../styles/GlobalStyles';
+import CustomText from './CustomText';
 
 // Define your prop types
 interface MyTextProps {
@@ -14,6 +14,7 @@ interface MyTextState {
   fullName: string;
 }
 
+/* Functional Component Implementation */
 const MyText = (props: MyTextProps) => {
   const TAG = 'MyText';
 
@@ -33,12 +34,11 @@ const MyText = (props: MyTextProps) => {
   }, [fullName]);
 
   return (
-    <Text
-      style={uiElements.myTextComponent}
-      onPress={() => setFullName('Nilesh Here')}
-    >
-      Hello! {props.name} React native world from {fullName}.
-    </Text>
+    <CustomText
+      customStyle={uiElements.myTextComponent}
+      customText={`Hello! ${props.name} React native world from ${fullName}.`}
+      customOnPress={() => setFullName('Nilesh Here')}
+    />
   );
 };
 

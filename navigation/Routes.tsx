@@ -1,3 +1,4 @@
+/** @format */
 export const Routes = {
   SocialMedia: 'SocialMedia',
   Home: 'Home',

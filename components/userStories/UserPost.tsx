@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { ThemeContext } from '../../context/ThemeContext';
@@ -11,7 +11,20 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import UserProfileImage from './UserProfileImage';
 import { horizontalScale, verticalScale } from '../../styles/Scaling';
+import CustomText from '../CustomText';
 
+/**
+ * UserPost Component - Displays a user's post with profile info, image, and interaction icons.
+ *
+ * @param {string} firstName - The first name of the user.
+ * @param {string} lastName - The last name of the user.
+ * @param {string} location - The location of the user.
+ * @param {any} image - The image source for the post.
+ * @param {any} profileImage - The profile image source of the user.
+ * @param {number} likes - The number of likes on the post.
+ * @param {number} comments - The number of comments on the post.
+ * @param {number} bookmarks - The number of bookmarks on the post.
+ */
 type UserPostsItemType = {
   firstName: string;
   lastName: string;
@@ -23,6 +36,9 @@ type UserPostsItemType = {
   bookmarks: number;
 };
 
+/**
+ * UserPost Component - Displays a user's post with profile info, image, and interaction icons.
+ */
 const UserPost: React.FC<UserPostsItemType> = ({
   firstName,
   lastName,
@@ -42,10 +58,17 @@ const UserPost: React.FC<UserPostsItemType> = ({
         <View style={uiElements.userContainer}>
           <UserProfileImage profileImage={profileImage} imageDimensions={48} />
           <View style={uiElements.userTextContainer}>
-            <Text style={uiElements.username}>
-              {firstName} {lastName}
-            </Text>
-            {location && <Text style={uiElements.location}> {location}</Text>}
+            <CustomText
+              customStyle={uiElements.username}
+              customText={firstName + ' ' + lastName}
+            />
+
+            {location && (
+              <CustomText
+                customStyle={uiElements.location}
+                customText={location}
+              />
+            )}
           </View>
         </View>
         <FontAwesomeIcon
@@ -70,14 +93,13 @@ const UserPost: React.FC<UserPostsItemType> = ({
             icon={faHeart}
             color={dynamicStyles.userPostColourStyle().color}
           />
-          <Text
-            style={dynamicStyles.userPostViewStyleTwo(
+          <CustomText
+            customStyle={dynamicStyles.userPostViewStyleTwo(
               horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
-          >
-            {likes}
-          </Text>
+            customText={likes.toString()}
+          />
         </View>
         <View
           style={dynamicStyles.userPostViewStyleOne(horizontalScale(27), 'row')}
@@ -86,14 +108,13 @@ const UserPost: React.FC<UserPostsItemType> = ({
             icon={faMessage}
             color={dynamicStyles.userPostColourStyle().color}
           />
-          <Text
-            style={dynamicStyles.userPostViewStyleTwo(
+          <CustomText
+            customStyle={dynamicStyles.userPostViewStyleTwo(
               horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
-          >
-            {comments}
-          </Text>
+            customText={comments.toString()}
+          />
         </View>
         <View
           style={dynamicStyles.userPostViewStyleOne(horizontalScale(27), 'row')}
@@ -102,14 +123,13 @@ const UserPost: React.FC<UserPostsItemType> = ({
             icon={faBookmark}
             color={dynamicStyles.userPostColourStyle().color}
           />
-          <Text
-            style={dynamicStyles.userPostViewStyleTwo(
+          <CustomText
+            customStyle={dynamicStyles.userPostViewStyleTwo(
               horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
-          >
-            {bookmarks}
-          </Text>
+            customText={bookmarks.toString()}
+          />
         </View>
       </View>
     </View>

@@ -1,7 +1,7 @@
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { TouchableOpacity, View, Text, FlatList } from 'react-native';
+import { TouchableOpacity, View, FlatList } from 'react-native';
 import { ThemeContext } from '../context/ThemeContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { globalStyles } from '../styles/GlobalStyles';
@@ -12,7 +12,12 @@ import { UserPostsItem, UserStoriesItem } from '../types/common';
 import UserPost from '../components/userStories/UserPost';
 import CustomLogs from '../components/CustomLogs';
 import { verticalScale } from '../styles/Scaling';
+import CustomText from '../components/CustomText';
 
+/**
+ * Social Media Screen
+ * @returns {React.FC} SocialMediaScreen
+ */
 const SocialMediaScreen: React.FC = () => {
   const TAG = 'SocialMediaScreen';
   //const insets = useSafeAreaInsets();
@@ -58,11 +63,11 @@ const SocialMediaScreen: React.FC = () => {
   }, []);
 
   /**
-   *
-   * @param database
-   * @param currentPage
-   * @param pageSize
-   * @returns
+   * Pagination function
+   * @param database - The complete dataset
+   * @param currentPage - The current page number
+   * @param pageSize - The number of items per page
+   * @returns A slice of the database corresponding to the requested page
    */
   const pagination = <T,>(
     database: T[],
@@ -78,7 +83,7 @@ const SocialMediaScreen: React.FC = () => {
   };
 
   /**
-   *
+   * Load more user stories when the end of the list is reached
    */
   const loadMoreUserStories = useCallback(() => {
     if (isLoadingUserStories) return;
@@ -100,7 +105,7 @@ const SocialMediaScreen: React.FC = () => {
   }, [isLoadingUserStories, userStoriesCurrentPage, userStoriesSize]);
 
   /**
-   *
+   * Load more user posts when the end of the list is reached
    */
   const loadMoreUserPost = useCallback(() => {
     if (isLoadingUserPosts) return;
@@ -121,6 +126,7 @@ const SocialMediaScreen: React.FC = () => {
     setIsLoadingUserPosts(false);
   }, [isLoadingUserPosts, userPostsCurrentPage, userPostsSize]);
 
+  /** Render Header Component */
   const renderHeader = () => (
     <>
       <View style={uiElements.viewStyle}>
@@ -128,7 +134,10 @@ const SocialMediaScreen: React.FC = () => {
         <TouchableOpacity style={uiElements.messageIconStyle}>
           <FontAwesomeIcon icon={faEnvelope} color="#898DAE" />
           <View style={uiElements.messageNumberContainer}>
-            <Text style={uiElements.messageNumberStyle}>2</Text>
+            <CustomText
+              customStyle={uiElements.messageNumberStyle}
+              customText="2"
+            />
           </View>
         </TouchableOpacity>
       </View>

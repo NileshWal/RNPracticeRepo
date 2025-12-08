@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native';
 import { getFontFamily } from '../utils/FontHelper';
 import { fontSizeScale, horizontalScale, verticalScale } from './Scaling';
 
+/**
+ * Global Styles
+ * @param isDarkMode - Boolean indicating if dark mode is enabled
+ * @returns {StyleSheet} StyleSheet object with global styles
+ */
 export const globalStyles = (isDarkMode: Boolean) =>
   StyleSheet.create({
     homeScreenSafeAreaContainer: {

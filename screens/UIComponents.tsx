@@ -3,7 +3,6 @@ import {
   Pressable,
   View,
   useColorScheme,
-  Text,
   TextInput,
   Switch,
   Alert,
@@ -14,7 +13,11 @@ import CustomLogs from '../components/CustomLogs';
 import useToggle from '../customHooks/useToggle';
 import MyText from '../components/MyText';
 import { validateLogin } from '../utils/Validations';
+import CustomText from '../components/CustomText';
 
+/** UI Components Screen
+ * @returns {React.FC} UIComponents
+ */
 const UIComponents = () => {
   const TAG = 'UIComponents';
   const scheme = useColorScheme(); // 'dark' or 'light'
@@ -34,6 +37,9 @@ const UIComponents = () => {
   const [passwordText, setPasswordText] = useState<string>('');
   const [showText, setShowText] = useState(true);
 
+  /**
+   * Handle Submit Button Press
+   */
   const handleSubmit = () => {
     const error = validateLogin(emailText, passwordText);
 
@@ -43,20 +49,27 @@ const UIComponents = () => {
     }
   };
 
+  /**
+   * Alert Message
+   * @param message - The message to display in the alert
+   */
   const alert = (message: string) => {
     Alert.alert(message);
   };
 
   return (
-    <SafeAreaProvider style={globalStyle.safeAreaStyle}>
+    <SafeAreaProvider style={globalStyle.appSafeAreaStyle}>
       {/* <MyText name={'Nilesh'} /> */}
       {showText && <MyText name="Nilesh" />}
       <View style={globalStyle.viewDimen} />
       <View style={globalStyle.viewContainer}>
-        <Text style={globalStyle.sampleTextDimen}>{isOn ? 'ON' : 'OFF'}</Text>
+        <CustomText
+          customStyle={globalStyle.sampleTextDimen}
+          customText={isOn ? 'ON' : 'OFF'}
+        />
         <Switch value={showText} onValueChange={toggleTheme} />
         <TextInput
-          style={globalStyle.input}
+          style={globalStyle.inputFieldStyle}
           placeholder="Email"
           placeholderTextColor="#888"
           onChangeText={value => {
@@ -70,7 +83,7 @@ const UIComponents = () => {
           textContentType="emailAddress"
         />
         <TextInput
-          style={globalStyle.input}
+          style={globalStyle.inputFieldStyle}
           placeholder="Password"
           placeholderTextColor="#888"
           onChangeText={value => {
@@ -81,7 +94,10 @@ const UIComponents = () => {
           secureTextEntry={true}
         />
         <Pressable style={globalStyle.buttonDimen} onPress={handleSubmit}>
-          <Text style={globalStyle.buttonText}>Toggle Theme</Text>
+          <CustomText
+            customStyle={globalStyle.buttonText}
+            customText="Toggle Theme"
+          />
         </Pressable>
       </View>
       {/* <Image
