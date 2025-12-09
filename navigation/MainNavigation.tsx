@@ -7,30 +7,40 @@ import Profile from '../screens/Profile';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { View } from 'react-native';
 import CustomText from '../components/CustomText';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
+import { globalStyles } from '../styles/GlobalStyles';
+import DonationScreen from '../screens/Home/DonationScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileTabs = createMaterialTopTabNavigator();
 
 const Tab1 = () => {
+  const isDarkTheme = useContext(ThemeContext);
+  const uiElements = globalStyles(isDarkTheme);
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={uiElements.tabStyle}>
       <CustomText customText={'This is tab 1'} />
     </View>
   );
 };
 
 const Tab2 = () => {
+  const isDarkTheme = useContext(ThemeContext);
+  const uiElements = globalStyles(isDarkTheme);
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={uiElements.tabStyle}>
       <CustomText customText={'This is tab 2'} />
     </View>
   );
 };
 
 const Tab3 = () => {
+  const isDarkTheme = useContext(ThemeContext);
+  const uiElements = globalStyles(isDarkTheme);
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={uiElements.tabStyle}>
       <CustomText customText={'This is tab 3'} />
     </View>
   );
@@ -52,11 +62,15 @@ const MainMenuNavigation = () => {
   return (
     <Drawer.Navigator
       screenOptions={{ header: () => null, headerShown: false }}
-      initialRouteName={Routes.Profile}
+      initialRouteName={Routes.HomeDonationScreen}
     >
       <Drawer.Screen name={Routes.Profile} component={Profile} />
       <Drawer.Screen name={Routes.SocialMedia} component={SocialMediaScreen} />
-      <Drawer.Screen name={Routes.Home} component={HomeScreen} />
+      <Drawer.Screen name={Routes.HomeScreen} component={HomeScreen} />
+      <Drawer.Screen
+        name={Routes.HomeDonationScreen}
+        component={DonationScreen}
+      />
     </Drawer.Navigator>
   );
 };

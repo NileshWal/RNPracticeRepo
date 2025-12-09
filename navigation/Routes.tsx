@@ -1,6 +1,7 @@
 /** @format */
 export const Routes = {
   SocialMedia: 'SocialMedia',
-  Home: 'Home',
+  HomeScreen: 'HomeScreen',
+  HomeDonationScreen: 'HomeDonationScreen',
   Profile: 'Profile',
 };

@@ -295,6 +295,11 @@ export const globalStyles = (isDarkMode: Boolean) =>
       borderRightWidth: 1,
       borderColor: '#E9EFF1',
     },
+    tabStyle: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   });
 
 //Dynamic styles
