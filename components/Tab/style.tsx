@@ -3,7 +3,7 @@ import {
   horizontalScale,
   fontSizeScale,
   verticalScale,
-} from '../../assets/styles/scaling';
+} from '../../styles/Scaling';
 
 const style = StyleSheet.create({
   tab: {

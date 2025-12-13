@@ -7,7 +7,7 @@ import { globalStyles } from '../../styles/GlobalStyles';
 import SingleDonationItem from '../../components/SingleDonationItem/SingleDonationItem';
 import { horizontalScale } from '../../styles/Scaling';
 
-const HomeDonation: React.FC = () => {
+const DonationScreen: React.FC = () => {
   const isDarkTheme = useContext(ThemeContext);
   const uiElements = globalStyles(isDarkTheme);
   return (
@@ -45,4 +45,4 @@ const HomeDonation: React.FC = () => {
   );
 };
 
-export default HomeDonation;
+export default DonationScreen;

@@ -1,10 +1,15 @@
 import React, { useRef, useState } from 'react';
-import { View, Text } from 'react-native';
-import PropTypes from 'prop-types';
+import { Text, Pressable } from 'react-native';
 
 import style from './style';
 import { horizontalScale } from '../../styles/Scaling';
-const Badge = props => {
+
+interface BadgeProps {
+  title: string;
+  isInactive: boolean;
+}
+
+const Badge: React.FC<BadgeProps> = ({ title, isInactive = false }) => {
   const [width, setWidth] = useState(0);
   const textRef = useRef(null);
   const paddingHorizontal = 10;
@@ -12,7 +17,7 @@ const Badge = props => {
     width: horizontalScale(paddingHorizontal * 2 + width),
   };
   return (
-    <View disabled={props.isInactive} style={[style.badge, badgeWidth]}>
+    <Pressable disabled={isInactive} style={[style.badge, badgeWidth]}>
       <Text
         onTextLayout={event => {
           setWidth(event.nativeEvent.lines[0].width);
@@ -20,14 +25,10 @@ const Badge = props => {
         ref={textRef}
         style={[style.title]}
       >
-        {props.title}
+        {title}
       </Text>
-    </View>
+    </Pressable>
   );
-};
-
-Badge.propTypes = {
-  title: PropTypes.string.isRequired,
 };
 
 export default Badge;
