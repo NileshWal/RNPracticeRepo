@@ -2,33 +2,29 @@ import { useContext } from 'react';
 import { Image, View } from 'react-native';
 import { ThemeContext } from '../../context/ThemeContext';
 import { globalStyles } from '../../styles/GlobalStyles';
-
-/**
- * User Profile Image Component
- * @param profileImage - Image source for the profile picture
- * @param imageDimensions - Dimensions for width and height of the image
- */
-type UserProfileImage = {
-  profileImage: any;
-  imageDimensions: number;
-};
+import { UserProfileImageProp } from '../../types/common';
 
 /**
  * UserProfileImage Component
  */
-const UserProfileImage: React.FC<UserProfileImage> = ({
-  profileImage,
-  imageDimensions,
-}) => {
+const UserProfileImage: React.FC<UserProfileImageProp> = (
+  itemProps: UserProfileImageProp,
+) => {
   const isDarkTheme = useContext(ThemeContext);
   const uiElements = globalStyles(isDarkTheme);
   return (
     <View
-      style={[uiElements.userImageContainer, { borderRadius: imageDimensions }]}
+      style={[
+        uiElements.userImageContainer,
+        { borderRadius: itemProps.imageDimensions },
+      ]}
     >
       <Image
-        source={profileImage}
-        style={{ width: imageDimensions, height: imageDimensions }}
+        source={itemProps.profileImage}
+        style={{
+          width: itemProps.imageDimensions,
+          height: itemProps.imageDimensions,
+        }}
       />
     </View>
   );

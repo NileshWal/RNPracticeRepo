@@ -4,12 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { fontSizeScale } from '../../styles/Scaling';
 import style from './style';
+import { SearchProps } from '../../types/common';
 
-interface SearchProps {
-  onSearch: (searchValue: string) => void;
-}
-
-const Search: React.FC<SearchProps> = ({ onSearch }) => {
+const Search: React.FC<SearchProps> = (itemProps: SearchProps) => {
   const textInputRef = useRef<TextInput | null>(null);
   const [search, setSearch] = useState('');
 
@@ -19,7 +16,7 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
 
   const handleSearch = (searchValue: string) => {
     setSearch(searchValue);
-    onSearch(searchValue);
+    itemProps.onSearch(searchValue);
   };
 
   return (

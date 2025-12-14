@@ -2,14 +2,9 @@ import React, { useRef, useState } from 'react';
 import { Pressable, Text } from 'react-native';
 import style from './style';
 import { horizontalScale } from '../../styles/Scaling';
+import { TabProps } from '../../types/common';
 
-interface TabProps {
-  title: string;
-  isInactive?: boolean;
-  customOnPress: () => void;
-}
-
-const Tab: React.FC<TabProps> = ({ title, isInactive, customOnPress }) => {
+const Tab: React.FC<TabProps> = (itemProps: TabProps) => {
   const [width, setWidth] = useState(0);
   const textRef = useRef(null);
   const paddingHorizontal = 33;
@@ -18,18 +13,18 @@ const Tab: React.FC<TabProps> = ({ title, isInactive, customOnPress }) => {
   };
   return (
     <Pressable
-      disabled={isInactive}
-      style={[style.tab, isInactive && style.inactiveTab, tabWidth]}
-      onPress={() => customOnPress()}
+      disabled={itemProps.isInactive}
+      style={[style.tab, itemProps.isInactive && style.inactiveTab, tabWidth]}
+      onPress={() => itemProps.customOnPress()}
     >
       <Text
         onTextLayout={event => {
           setWidth(event.nativeEvent.lines[0].width);
         }}
         ref={textRef}
-        style={[style.title, isInactive && style.inactiveTitle]}
+        style={[style.title, itemProps.isInactive && style.inactiveTitle]}
       >
-        {title}
+        {itemProps.title}
       </Text>
     </Pressable>
   );

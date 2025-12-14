@@ -12,43 +12,14 @@ import {
 import UserProfileImage from './UserProfileImage';
 import { horizontalScale, verticalScale } from '../../styles/Scaling';
 import CustomText from '../CustomText';
-
-/**
- * UserPost Component - Displays a user's post with profile info, image, and interaction icons.
- *
- * @param {string} firstName - The first name of the user.
- * @param {string} lastName - The last name of the user.
- * @param {string} location - The location of the user.
- * @param {any} image - The image source for the post.
- * @param {any} profileImage - The profile image source of the user.
- * @param {number} likes - The number of likes on the post.
- * @param {number} comments - The number of comments on the post.
- * @param {number} bookmarks - The number of bookmarks on the post.
- */
-type UserPostsItemType = {
-  firstName: string;
-  lastName: string;
-  location: string;
-  image: any;
-  profileImage: any;
-  likes: number;
-  comments: number;
-  bookmarks: number;
-};
+import { UserPostsItemType } from '../../types/common';
 
 /**
  * UserPost Component - Displays a user's post with profile info, image, and interaction icons.
  */
-const UserPost: React.FC<UserPostsItemType> = ({
-  firstName,
-  lastName,
-  location,
-  image,
-  profileImage,
-  likes,
-  comments,
-  bookmarks,
-}) => {
+const UserPost: React.FC<UserPostsItemType> = (
+  itemProps: UserPostsItemType,
+) => {
   const isDarkTheme = useContext(ThemeContext);
   const uiElements = globalStyles(isDarkTheme);
 
@@ -56,17 +27,20 @@ const UserPost: React.FC<UserPostsItemType> = ({
     <View style={uiElements.userPostItemContainer}>
       <View style={uiElements.user}>
         <View style={uiElements.userContainer}>
-          <UserProfileImage profileImage={profileImage} imageDimensions={48} />
+          <UserProfileImage
+            profileImage={itemProps.profileImage}
+            imageDimensions={48}
+          />
           <View style={uiElements.userTextContainer}>
             <CustomText
               customStyle={uiElements.username}
-              customText={firstName + ' ' + lastName}
+              customText={itemProps.firstName + ' ' + itemProps.lastName}
             />
 
-            {location && (
+            {itemProps.location && (
               <CustomText
                 customStyle={uiElements.location}
-                customText={location}
+                customText={itemProps.location}
               />
             )}
           </View>
@@ -79,7 +53,7 @@ const UserPost: React.FC<UserPostsItemType> = ({
         />
       </View>
       <View style={uiElements.postImage}>
-        <Image source={image} />
+        <Image source={itemProps.image} />
       </View>
       <View
         style={dynamicStyles.userPostViewStyleOne(
@@ -98,7 +72,7 @@ const UserPost: React.FC<UserPostsItemType> = ({
               horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
-            customText={likes.toString()}
+            customText={itemProps.likes.toString()}
           />
         </View>
         <View
@@ -113,7 +87,7 @@ const UserPost: React.FC<UserPostsItemType> = ({
               horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
-            customText={comments.toString()}
+            customText={itemProps.comments.toString()}
           />
         </View>
         <View
@@ -128,7 +102,7 @@ const UserPost: React.FC<UserPostsItemType> = ({
               horizontalScale(3),
               dynamicStyles.userPostColourStyle().color,
             )}
-            customText={bookmarks.toString()}
+            customText={itemProps.bookmarks.toString()}
           />
         </View>
       </View>

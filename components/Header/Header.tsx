@@ -1,16 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import style from './style';
+import { HeaderProps } from '../../types/common';
 
-interface HeaderProps {
-  title?: string;
-  type?: 1 | 2 | 3;
-  color?: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ title, type, color }) => {
+const Header: React.FC<HeaderProps> = (itemProps: HeaderProps) => {
   const styleToApply = () => {
-    switch (type) {
+    switch (itemProps.type) {
       case 1:
         return style.title1;
       case 2:
@@ -21,7 +16,11 @@ const Header: React.FC<HeaderProps> = ({ title, type, color }) => {
   };
   return (
     <View>
-      <Text style={[styleToApply(), color && { color: color }]}>{title}</Text>
+      <Text
+        style={[styleToApply(), itemProps.color && { color: itemProps.color }]}
+      >
+        {itemProps.title}
+      </Text>
     </View>
   );
 };

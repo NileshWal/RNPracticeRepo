@@ -1,25 +1,16 @@
 import React from 'react';
 import { Pressable, Text } from 'react-native';
 import style from './style';
+import { CustomButtonProps } from '../../types/common';
 
-interface ButtonProps {
-  title: string;
-  isDisabled?: boolean;
-  customOnPress: () => void;
-}
-
-const Button: React.FC<ButtonProps> = ({
-  title,
-  isDisabled,
-  customOnPress,
-}) => {
+const Button: React.FC<CustomButtonProps> = (itemProps: CustomButtonProps) => {
   return (
     <Pressable
-      disabled={isDisabled}
-      style={[style.button, isDisabled && style.disabled]}
-      onPress={() => customOnPress()}
+      disabled={itemProps.isDisabled}
+      style={[style.button, itemProps.isDisabled && style.disabled]}
+      onPress={() => itemProps.customOnPress()}
     >
-      <Text style={style.title}>{title}</Text>
+      <Text style={style.title}>{itemProps.title}</Text>
     </Pressable>
   );
 };
