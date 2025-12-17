@@ -1,18 +1,33 @@
 import React, { useContext } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { Pressable, SafeAreaView, View } from 'react-native';
 import Search from '../../components/Search/Search';
 import style from './style';
 import { ThemeContext } from '../../context/ThemeContext';
 import { globalStyles } from '../../styles/GlobalStyles';
 import SingleDonationItem from '../../components/SingleDonationItem/SingleDonationItem';
 import Header from '../../components/Header/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
+import CustomText from '../../components/CustomText';
+import { updateFirstName } from '../../redux/reducers/User';
 
 const DonationScreen: React.FC = () => {
   const isDarkTheme = useContext(ThemeContext);
   const uiElements = globalStyles(isDarkTheme);
+
+  const userSelector = useSelector((state: RootState) => state.user);
+  const userDispatch = useDispatch();
+
   return (
     <SafeAreaView style={[uiElements.backgroundWhite, uiElements.flex]}>
-      <Header title={'Donations'} />
+      <Header title={userSelector.firstName} />
+      <CustomText
+        customStyle={uiElements.firstName}
+        customText="Change name to Jane"
+        customOnPress={() =>
+          userDispatch(updateFirstName({ firstName: 'Jane' }))
+        }
+      />
       {/*<Search*/}
       {/*  onSearch={value => {*/}
       {/*    console.log(value);*/}

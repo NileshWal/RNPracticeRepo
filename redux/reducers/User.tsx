@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+//Created redux slice.
+
+const defaultState = {
   firstName: 'Joe',
   lastName: 'Rogan',
   userId: 1,
@@ -8,7 +10,7 @@ const initialState = {
 
 export const User = createSlice({
   name: 'User',
-  initialState: initialState,
+  initialState: defaultState,
   reducers: {
     updateFirstName: (state, action) => {
       state.firstName = action.payload.firstName;
@@ -18,4 +20,4 @@ export const User = createSlice({
 
 export const { updateFirstName } = User.actions;
 
-export default User;
+export default User.reducer;
