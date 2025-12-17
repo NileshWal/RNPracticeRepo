@@ -300,6 +300,11 @@ export const globalStyles = (isDarkMode: Boolean) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
+    donationView: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: horizontalScale(24),
+    },
   });
 
 //Dynamic styles

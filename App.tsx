@@ -13,6 +13,8 @@ import ToolBar from './components/ToolBar';
 import { globalStyles } from './styles/GlobalStyles';
 import { NavigationContainer } from '@react-navigation/native';
 import MainNavigation from './navigation/MainNavigation';
+import { Provider } from 'react-redux';
+import store from './redux/Store';
 
 function App() {
   // const TAG = 'App';
@@ -23,12 +25,14 @@ function App() {
 
   return (
     <ThemeContext.Provider value={isDarkTheme}>
-      <NavigationContainer>
-        <SafeAreaProvider style={globalStyle.appSafeAreaStyle}>
-          <ToolBar title="My App" isDarkMode={isDarkTheme} />
-          <MainNavigation />
-        </SafeAreaProvider>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <SafeAreaProvider style={globalStyle.appSafeAreaStyle}>
+            <ToolBar title="My App" isDarkMode={isDarkTheme} />
+            <MainNavigation />
+          </SafeAreaProvider>
+        </NavigationContainer>
+      </Provider>
     </ThemeContext.Provider>
   );
 }
